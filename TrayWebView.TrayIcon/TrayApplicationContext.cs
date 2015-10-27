@@ -43,11 +43,14 @@ namespace TrayWebView.TrayIcon
 				chromiumForm = new MainWindow();
 				ElementHost.EnableModelessKeyboardInterop(chromiumForm);
 				chromiumForm.Show();
-
+			}
+			else if(!chromiumForm.IsVisible)
+			{
+				chromiumForm.Show();
 			}
 			else
 			{
-				chromiumForm.Activate();
+				chromiumForm.Hide();
 			}
 		}
 	}
