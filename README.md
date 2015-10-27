@@ -1,2 +1,2 @@
 # tray-webview
-Chromium web view displayable in the Windows system tray.
+Chromium web view displayable from the Windows system tray.
