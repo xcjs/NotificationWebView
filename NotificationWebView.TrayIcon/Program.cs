@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TrayWebView.TrayIcon
+namespace NotificationWebView.NotificationIcon
 {
 	static class Program
 	{
@@ -17,7 +17,7 @@ namespace TrayWebView.TrayIcon
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 
-			var trayContext = new TrayApplicationContext();
+			var trayContext = new NotificationApplicationContext();
 			Application.Run(trayContext);
 		}
 	}
