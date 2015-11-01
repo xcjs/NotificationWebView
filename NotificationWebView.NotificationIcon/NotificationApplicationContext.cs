@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Diagnostics;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Forms.Integration;
 using NotificationWebView.ChromiumUI;
 
 namespace NotificationWebView.NotificationIcon
@@ -42,32 +35,16 @@ namespace NotificationWebView.NotificationIcon
 			if (chromiumForm == null)
 			{
 				chromiumForm = new MainWindow();
-				ElementHost.EnableModelessKeyboardInterop(chromiumForm);
-				ShowWebView();
+				chromiumForm.SlideUp();
 			}
 			else if(!chromiumForm.IsVisible)
 			{
-				ShowWebView();
+				chromiumForm.SlideUp();
 			}
 			else
 			{
-				chromiumForm.Hide();
+				chromiumForm.SlideDown();
 			}
-		}
-
-		private void ShowWebView()
-		{
-			if (chromiumForm == null) return;
-
-			var dpiSettings = new DpiCalculator();
-			dpiSettings.LoadDpi();
-
-			chromiumForm.Left = Cursor.Position.X / dpiSettings.ScalingFactorX - chromiumForm.Width / 2;
-
-			// The WPF form height is already adjusted for the DPI - WorkingArea.Bottom will report the physical pixels.
-			chromiumForm.Top = Screen.PrimaryScreen.WorkingArea.Bottom / dpiSettings.ScalingFactorY - chromiumForm.Height;
-
-			chromiumForm.Show();
-		}
+		}		
 	}
 }
