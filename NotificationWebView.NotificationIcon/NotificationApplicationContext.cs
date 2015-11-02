@@ -24,7 +24,7 @@ namespace NotificationWebView.NotificationIcon
 			{
 				ContextMenuStrip = new ContextMenuStrip(),
 				Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath),
-				Text = "TrayWebView",
+				Text = "NotificationWebView",
 				Visible = true
 			};
 			notifyIcon.Click += notifyIcon_Click;
