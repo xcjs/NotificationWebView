@@ -5,6 +5,8 @@ using System.Windows.Forms;
 using System.Windows.Media.Animation;
 using System.Linq;
 using System.ComponentModel;
+using CefSharp.Wpf;
+using System.Threading.Tasks;
 
 namespace NotificationWebView.ChromiumUI
 {
@@ -29,7 +31,22 @@ namespace NotificationWebView.ChromiumUI
 			SlideUpAnimation = (DoubleAnimation)SlideUpStoryboard.Children.First();
 			SlideDownAnimation = (DoubleAnimation)SlideDownStoryboard.Children.First();
 
-			
+			Loaded += new RoutedEventHandler(async delegate (object o, RoutedEventArgs e)
+			{
+				if (WebView.Content is ChromiumWebBrowser)
+				{
+					ChromiumWebBrowser oldBrowser = WebView.Content as ChromiumWebBrowser;
+					WebView.Content = null;
+					oldBrowser.Dispose();
+				}
+				await Task.Delay(10);
+
+				ChromiumWebBrowser browser = new ChromiumWebBrowser()
+				{
+					Address = "http://www.xcjs.com"
+				};
+				WebView.Content = browser;
+			});
 
 			Closing += new CancelEventHandler(delegate (object o, CancelEventArgs e)
 			{
