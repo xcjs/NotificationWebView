@@ -15,11 +15,11 @@ namespace NotificationWebView.ChromiumUI
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-		private Storyboard SlideUpStoryboard { get; set; }
-		private Storyboard SlideDownStoryboard { get; set; }
+		private Storyboard SlideUpStoryboard = null;
+		private Storyboard SlideDownStoryboard  = null;
 
-		private DoubleAnimation SlideUpAnimation { get; set; }
-		private DoubleAnimation SlideDownAnimation { get; set; }
+		private DoubleAnimation SlideUpAnimation = null;
+		private DoubleAnimation SlideDownAnimation = null;
 
 		public MainWindow()
 		{
