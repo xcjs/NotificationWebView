@@ -14,12 +14,12 @@
 			<DoubleAnimation x:Name="SlideDownAnimation" Duration="0:0:.5" Storyboard.TargetProperty="Top" AccelerationRatio=".1"/>
 		</Storyboard>
 	</Window.Resources>
-	<Grid>
+	<Grid Margin="1,1,1,1">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="36" />
 			<RowDefinition Height="640" />
 		</Grid.RowDefinitions>
-		<Button Grid.Row="0" x:Name="btnBack" HorizontalAlignment="Left" Margin="0,0,0,0" Width="36" Height="36" BorderThickness="0">
+		<Button Command="{Binding WebBrowser.BackCommand}" Grid.Row="0" x:Name="btnBack" HorizontalAlignment="Left" Margin="0,0,0,0" Width="36" Height="36" BorderThickness="0">
 			<Button.Background>
 				<ImageBrush ImageSource="Assets/Left Arrow.png" TileMode="None" />
 			</Button.Background>
@@ -39,7 +39,7 @@
 				<ImageBrush ImageSource="Assets/Refresh.png" TileMode="None" />
 			</Button.Background>
 		</Button>
-		<TextBox Grid.Row="0" Margin="108,0,0,0" Height="36" BorderBrush="Black" BorderThickness="0" Cursor="IBeam" />
+		<TextBox Grid.Row="0" Margin="108,0,0,0" Height="36" BorderBrush="Black" BorderThickness="1" Cursor="IBeam" VerticalAlignment="Center" FontSize="24" MaxLines="1" />
 		<ContentControl Grid.Row="2" x:Name="WebView" Margin="0,0,0,0" Width="460" Height="640" />		
 	</Grid>
 	<Window.Effect>
