@@ -66,17 +66,18 @@ namespace NotificationWebView.ChromiumUI
 			var dpiSettings = new DpiCalculator();
 			dpiSettings.LoadDpi();
 
-			System.Drawing.Point cursor = Control.MousePosition;
-
+			System.Drawing.Point cursor = Control.MousePosition;			
+			
 			SlideUpAnimation.From = Screen.PrimaryScreen.Bounds.Bottom;
-			Left = cursor.X / dpiSettings.ScalingFactorX - Width / 2;
+			Top = SlideUpAnimation.From.Value;
+			Show();
 
-			// The WPF form height is already adjusted for the DPI - WorkingArea.Bottom will report the physical pixels.
-			Top = Screen.PrimaryScreen.WorkingArea.Bottom / dpiSettings.ScalingFactorY - Height;
-			SlideUpAnimation.To = Screen.PrimaryScreen.WorkingArea.Bottom / dpiSettings.ScalingFactorY - Height;
+			Left = cursor.X / dpiSettings.ScalingFactorX - ActualWidth / 2;
+
+			// The WPF form height is already adjusted for the DPI (software pixels) - WorkingArea.Bottom will report the physical pixels.
+			SlideUpAnimation.To = Screen.PrimaryScreen.WorkingArea.Bottom / dpiSettings.ScalingFactorY - ActualHeight;
 
 			SlideUpStoryboard.Begin(this);
-			Show();
 		}
 
 		public void SlideDown()

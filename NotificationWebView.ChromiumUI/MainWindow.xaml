@@ -5,16 +5,28 @@
 		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		xmlns:local="clr-namespace:NotificationWebView.ChromiumUI"
 		mc:Ignorable="d"
-		Title="NotificationWebView" Height="640" Width="360" ResizeMode="NoResize" ShowInTaskbar="False" Topmost="True" Icon="Assets\chromium-xcjs.ico">
-	<ContentControl x:Name="WebView" Content="Browser goes here" Grid.Column="1" />
+		Title="NotificationWebView" SizeToContent="WidthAndHeight" ResizeMode="NoResize" ShowInTaskbar="False" Topmost="True" Icon="Assets\chromium-xcjs.ico">
 	<Window.Resources>
 		<Storyboard x:Key="SlideUpStoryboard">
 			<DoubleAnimation x:Name="SlideUpAnimation" Duration="0:0:.5" Storyboard.TargetProperty="Top" AccelerationRatio=".1"/>
 		</Storyboard>
 		<Storyboard x:Key="SlideDownStoryboard">
 			<DoubleAnimation x:Name="SlideDownAnimation" Duration="0:0:.5" Storyboard.TargetProperty="Top" AccelerationRatio=".1"/>
-		</Storyboard>		
+		</Storyboard>
 	</Window.Resources>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="36" />
+			<RowDefinition Height="36" />
+			<RowDefinition Height="640" />
+		</Grid.RowDefinitions>
+		<Button Grid.Row="0" HorizontalAlignment="Left" Width="36" Height="36" Margin="0,0,324,687.5" BorderThickness="0" BorderBrush="White">
+			<Button.Background>
+				<ImageBrush ImageSource="Assets/Left Arrow.png" Stretch="None" TileMode="None" />
+			</Button.Background>
+		</Button>
+		<ContentControl Grid.Row="2" x:Name="WebView" Margin="0,0,0,0" Width="460" Height="640" />
+	</Grid>
 	<Window.Effect>
 		<DropShadowEffect/>
 	</Window.Effect>
