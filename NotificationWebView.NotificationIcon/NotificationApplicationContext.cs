@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Windows.Forms.Integration;
 using NotificationWebView.ChromiumUI;
 
 namespace NotificationWebView.NotificationIcon
@@ -35,6 +36,7 @@ namespace NotificationWebView.NotificationIcon
 			if (chromiumForm == null)
 			{
 				chromiumForm = new MainWindow();
+				ElementHost.EnableModelessKeyboardInterop(chromiumForm);
 				chromiumForm.SlideUp();
 			}
 			else if(!chromiumForm.IsVisible)
