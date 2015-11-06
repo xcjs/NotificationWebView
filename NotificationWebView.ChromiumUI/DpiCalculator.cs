@@ -11,9 +11,7 @@ namespace NotificationWebView.ChromiumUI
 
 		public const int DefaultDpi = 96;
 
-		private Image pokeBitmap;
-
-		
+		private Image pokeBitmap;	
 
 		public DpiCalculator()
 		{
