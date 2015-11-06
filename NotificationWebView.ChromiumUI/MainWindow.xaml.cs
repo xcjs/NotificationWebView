@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using System.Windows.Media.Animation;
 using System.Linq;
 using System.ComponentModel;
+using CefSharp;
 using CefSharp.Wpf;
 using System.Threading.Tasks;
 using System.Diagnostics;
@@ -22,9 +23,16 @@ namespace NotificationWebView.ChromiumUI
 		private DoubleAnimation SlideUpAnimation = null;
 		private DoubleAnimation SlideDownAnimation = null;
 
+		private CefSettings WebViewSettings = null;
+
 		public MainWindow()
 		{
 			InitializeComponent();
+
+			WebViewSettings = new CefSettings();
+			WebViewSettings.UserAgent = "Mozilla/5.0 (Linux; 6.0;) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Mobile Safari/537.36";
+
+			Cef.Initialize(WebViewSettings);
 
 			SlideUpStoryboard = (Storyboard)TryFindResource("SlideUpStoryboard");
 			SlideDownStoryboard = (Storyboard)TryFindResource("SlideDownStoryboard");
@@ -92,7 +100,7 @@ namespace NotificationWebView.ChromiumUI
 
 			ChromiumWebBrowser browser = new ChromiumWebBrowser()
 			{
-				Address = url
+                Address = url
 			};
 
 			txtUrl.Text = browser.Address;
