@@ -32,21 +32,9 @@ namespace NotificationWebView.ChromiumUI
 			SlideUpAnimation = (DoubleAnimation)SlideUpStoryboard.Children.First();
 			SlideDownAnimation = (DoubleAnimation)SlideDownStoryboard.Children.First();
 
-			Loaded += new RoutedEventHandler(async delegate (object o, RoutedEventArgs e)
+			Loaded += new RoutedEventHandler(delegate (object o, RoutedEventArgs e)
 			{
-				if (WebView.Content is ChromiumWebBrowser)
-				{
-					ChromiumWebBrowser oldBrowser = WebView.Content as ChromiumWebBrowser;
-					WebView.Content = null;
-					oldBrowser.Dispose();
-				}
-				await Task.Delay(10);
-
-				ChromiumWebBrowser browser = new ChromiumWebBrowser()
-				{
-					Address = "http://www.xcjs.com"
-				};
-				WebView.Content = browser;
+				NavigateTo("http://xcjs.com");
 			});
 
 			Closing += new CancelEventHandler(delegate (object o, CancelEventArgs e)
@@ -91,5 +79,35 @@ namespace NotificationWebView.ChromiumUI
 
 			SlideDownStoryboard.Begin(this);
 		}
-    }
+
+		public async void NavigateTo(string url)
+		{
+			if (WebView.Content is ChromiumWebBrowser)
+			{
+				ChromiumWebBrowser oldBrowser = WebView.Content as ChromiumWebBrowser;
+				WebView.Content = null;
+				oldBrowser.Dispose();
+			}
+			await Task.Delay(10);
+
+			ChromiumWebBrowser browser = new ChromiumWebBrowser()
+			{
+				Address = url
+			};
+
+			txtUrl.Text = browser.Address;
+
+			WebView.Content = browser;
+		}
+
+		public void txtUrl_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
+		{
+			switch (e.Key)
+			{
+				case Key.Enter:
+					NavigateTo(txtUrl.Text);
+					break;
+			}
+		}
+	}
 }
