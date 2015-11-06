@@ -7,6 +7,7 @@ using System.Linq;
 using System.ComponentModel;
 using CefSharp.Wpf;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace NotificationWebView.ChromiumUI
 {
@@ -90,5 +91,5 @@ namespace NotificationWebView.ChromiumUI
 
 			SlideDownStoryboard.Begin(this);
 		}
-	}
+    }
 }
