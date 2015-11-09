@@ -9,9 +9,10 @@ namespace NotificationWebView.NotificationIcon
 {
 	class NotificationApplicationContext : ApplicationContext
 	{
-		private IContainer components;		// a list of components to dispose when the context is disposed
-		private NotifyIcon notifyIcon;      // the icon that sits in the system tray
-		private MainWindow chromiumForm = null;
+		private IContainer Components;		// a list of components to dispose when the context is disposed
+		private NotifyIcon NotifyIcon;      // the icon that sits in the system tray
+		private MainWindow ChromiumForm = null;
+		private ContextMenu RightClickMenu = null;
 
 		public NotificationApplicationContext()
 		{
@@ -20,33 +21,82 @@ namespace NotificationWebView.NotificationIcon
 
 		private void InitializeContext()
 		{
-			components = new System.ComponentModel.Container();
-			notifyIcon = new NotifyIcon(components)
+			Components = new Container();
+
+			RightClickMenu = new ContextMenu();
+
+			var exitMenuItem = new MenuItem();
+			exitMenuItem.Text = "Exit NotificationWebView";
+
+			NotifyIcon = new NotifyIcon(Components)
 			{
 				ContextMenuStrip = new ContextMenuStrip(),
+				ContextMenu = new ContextMenu(),
 				Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath),
 				Text = "NotificationWebView",
 				Visible = true
 			};
-			notifyIcon.Click += notifyIcon_Click;
+
+			exitMenuItem.Click += ExitMenuItem_Click;
+			NotifyIcon.ContextMenu.MenuItems.Add(exitMenuItem);
+
+			NotifyIcon.Click += notifyIcon_Click;
+
+			if(System.Windows.Application.Current == null)
+			{
+				new System.Windows.Application();
+			}
+		}
+
+		private void ExitMenuItem_Click(object sender, EventArgs e)
+		{
+			CloseWebView();
 		}
 
 		private void notifyIcon_Click(object sender, EventArgs e)
 		{
-			if (chromiumForm == null)
+			var mouseEvent = e as MouseEventArgs;
+
+			if (mouseEvent == null) return;
+			
+			switch(mouseEvent.Button)
 			{
-				chromiumForm = new MainWindow();
-				ElementHost.EnableModelessKeyboardInterop(chromiumForm);
-				chromiumForm.SlideUp();
+				default:
+					ManageWebViewInstance();
+					break;
+
+				case MouseButtons.Right:
+					// Do nothing, allow the WinForm to handle the ContextMenu.
+					break;
+			}		
+		}
+		
+		private void ManageWebViewInstance()
+		{
+			if (ChromiumForm == null)
+			{
+				ChromiumForm = new MainWindow();
+				ElementHost.EnableModelessKeyboardInterop(ChromiumForm);
+				ChromiumForm.SlideUp();
 			}
-			else if(!chromiumForm.IsVisible)
+			else if (!ChromiumForm.IsVisible)
 			{
-				chromiumForm.SlideUp();
+				ChromiumForm.SlideUp();
 			}
 			else
 			{
-				chromiumForm.SlideDown();
+				ChromiumForm.SlideDown();
 			}
 		}		
+
+		private void CloseWebView()
+		{
+			if(ChromiumForm != null)
+			{
+				ChromiumForm.Close();
+			}
+			
+			Application.Exit();
+		}
 	}
 }

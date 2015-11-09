@@ -15,7 +15,7 @@ namespace NotificationWebView.ChromiumUI
 	/// <summary>
 	/// Interaction logic for MainWindow.xaml
 	/// </summary>
-	public partial class MainWindow : Window
+	public partial class MainWindow : Window, IDisposable
 	{
 		private Storyboard SlideUpStoryboard = null;
 		private Storyboard SlideDownStoryboard  = null;
@@ -23,6 +23,7 @@ namespace NotificationWebView.ChromiumUI
 		private DoubleAnimation SlideUpAnimation = null;
 		private DoubleAnimation SlideDownAnimation = null;
 
+		private ChromiumWebBrowser Browser = null;
 		private CefSettings WebViewSettings = null;
 
 		public MainWindow()
@@ -40,22 +41,28 @@ namespace NotificationWebView.ChromiumUI
 			SlideUpAnimation = (DoubleAnimation)SlideUpStoryboard.Children.First();
 			SlideDownAnimation = (DoubleAnimation)SlideDownStoryboard.Children.First();
 
-			Loaded += new RoutedEventHandler(delegate (object o, RoutedEventArgs e)
+			Loaded += new RoutedEventHandler(delegate (object sender, RoutedEventArgs e)
 			{
 				NavigateTo("http://xcjs.com");
 			});
 
-			Closing += new CancelEventHandler(delegate (object o, CancelEventArgs e)
+			Closing += new CancelEventHandler(delegate (object sender, CancelEventArgs e)
 			{
 				e.Cancel = true;
-				SlideDown();
+				SlideDown();		
 			});
 
+			System.Windows.Application.Current.Exit += Current_Exit;
 
 			SlideDownAnimation.Completed += new EventHandler(delegate (object o, EventArgs e)
 			{
 				Hide();
 			});
+		}
+
+		private void Current_Exit(object sender, ExitEventArgs e)
+		{
+			Dispose();
 		}
 
 		public void SlideUp()
@@ -98,14 +105,19 @@ namespace NotificationWebView.ChromiumUI
 			}
 			await Task.Delay(10);
 
-			ChromiumWebBrowser browser = new ChromiumWebBrowser()
+			Browser = new ChromiumWebBrowser()
 			{
                 Address = url
 			};
 
-			txtUrl.Text = browser.Address;
+			txtUrl.Text = Browser.Address;
 
-			WebView.Content = browser;
+			WebView.Content = Browser;
+
+			WebView.MouseDown += new MouseButtonEventHandler(delegate (object sender, MouseButtonEventArgs e)
+			{
+				Browser.Focus();
+			});
 		}
 
 		public void txtUrl_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
@@ -116,6 +128,13 @@ namespace NotificationWebView.ChromiumUI
 					NavigateTo(txtUrl.Text);
 					break;
 			}
+		}
+
+		public void Dispose()
+		{
+			if (Browser == null) return;
+
+			Browser.Dispose();
 		}
 	}
 }
