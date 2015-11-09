@@ -40,7 +40,7 @@
 			</Button.Background>
 		</Button>
 		<TextBox Name="txtUrl" Grid.Row="0" Margin="108,0,0,0" Height="36" BorderBrush="Black" BorderThickness="1" Cursor="IBeam" VerticalAlignment="Center" FontSize="24" MaxLines="1" KeyUp="txtUrl_KeyUp" />
-		<ContentControl Grid.Row="2" x:Name="WebView" Margin="0,0,0,0" Width="460" Height="640" />		
+		<ContentControl Grid.Row="2" x:Name="WebView" Margin="0,0,0,0" Width="360" Height="640" />		
 	</Grid>
 	<Window.Effect>
 		<DropShadowEffect/>
