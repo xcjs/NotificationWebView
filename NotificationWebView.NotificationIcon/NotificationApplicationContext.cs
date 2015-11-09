@@ -96,7 +96,9 @@ namespace NotificationWebView.NotificationIcon
 				ChromiumForm.Close();
 				ChromiumForm.Dispose();
 			}
-			
+
+			NotifyIcon.Dispose();
+
 			Application.Exit();
 		}
 	}

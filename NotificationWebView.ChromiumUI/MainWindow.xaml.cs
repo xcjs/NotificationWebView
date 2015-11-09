@@ -26,6 +26,8 @@ namespace NotificationWebView.ChromiumUI
 		private ChromiumWebBrowser Browser = null;
 		private CefSettings WebViewSettings = null;
 
+		private bool FullTermination = false;
+
 		public MainWindow()
 		{
 			InitializeComponent();
@@ -48,7 +50,10 @@ namespace NotificationWebView.ChromiumUI
 
 			Closing += new CancelEventHandler(delegate (object sender, CancelEventArgs e)
 			{
-				e.Cancel = true;
+				if(!FullTermination)
+				{
+					e.Cancel = true;
+				}				
 				SlideDown();		
 			});
 
@@ -134,7 +139,10 @@ namespace NotificationWebView.ChromiumUI
 		{
 			if (Browser == null) return;
 
+			FullTermination = true;
+			Close();
 			Browser.Dispose();
+			SubProcessManager.KillSubProcesses();
 		}
 	}
 }
