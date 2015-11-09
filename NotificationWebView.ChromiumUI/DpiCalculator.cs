@@ -1,8 +1,9 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 
 namespace NotificationWebView.ChromiumUI
 {
-	class DpiCalculator
+	class DpiCalculator: IDisposable
 	{
 		public float DpiX { get; set; }
 		public float DpiY { get; set; }
@@ -11,21 +12,26 @@ namespace NotificationWebView.ChromiumUI
 
 		public const int DefaultDpi = 96;
 
-		private Image pokeBitmap;	
+		private Image PokeBitmap;	
 
 		public DpiCalculator()
 		{
-			pokeBitmap = new Bitmap(1, 1);
+			PokeBitmap = new Bitmap(1, 1);
 		}
 
 		public void LoadDpi()
 		{
-			var g = Graphics.FromImage(pokeBitmap);
+			var g = Graphics.FromImage(PokeBitmap);
 
 			DpiX = g.DpiX;
 			DpiY = g.DpiY;
 			ScalingFactorX = DpiX / DefaultDpi;
 			ScalingFactorY = DpiY / DefaultDpi;
+		}
+
+		public void Dispose()
+		{
+			PokeBitmap.Dispose();
 		}
 	}
 }
