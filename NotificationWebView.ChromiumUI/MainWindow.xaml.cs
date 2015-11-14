@@ -144,7 +144,6 @@ namespace NotificationWebView.ChromiumUI
 			AllowFormClose = true;
 			Close();
 			Browser.Dispose();
-			//SubProcessManager.KillSubProcesses();
 		}
 	}
 }
