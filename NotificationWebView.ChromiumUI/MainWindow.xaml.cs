@@ -33,7 +33,7 @@ namespace NotificationWebView.ChromiumUI
 			InitializeComponent();
 
 			WebViewSettings = new CefSettings();
-			WebViewSettings.UserAgent = "Mozilla/5.0 (Linux; 6.0;) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Mobile Safari/537.36";
+			WebViewSettings.UserAgent = String.Format("Mozilla/5.0 (Linux; 6.0;) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/{0} Mobile Safari/537.36", Cef.ChromiumVersion);
 
 			Cef.Initialize(WebViewSettings);
 
