@@ -26,7 +26,7 @@ namespace NotificationWebView.ChromiumUI
 		private ChromiumWebBrowser Browser = null;
 		private CefSettings WebViewSettings = null;
 
-		private bool FullTermination = false;
+		private bool AllowFormClose = false;
 
 		public MainWindow()
 		{
@@ -50,7 +50,7 @@ namespace NotificationWebView.ChromiumUI
 
 			Closing += new CancelEventHandler(delegate (object sender, CancelEventArgs e)
 			{
-				if(!FullTermination)
+				if(!AllowFormClose)
 				{
 					e.Cancel = true;
 				}				
@@ -141,7 +141,7 @@ namespace NotificationWebView.ChromiumUI
 		{
 			if (Browser == null) return;
 
-			FullTermination = true;
+			AllowFormClose = true;
 			Close();
 			Browser.Dispose();
 			SubProcessManager.KillSubProcesses();
