@@ -19,9 +19,33 @@ namespace NotificationWebView.ChromiumUI
 	/// </summary>
 	public partial class NotificationIcon : ResourceDictionary
 	{
+		public MainWindow Browser { get; set; }
+
 		public NotificationIcon()
 		{
-
+			Browser = new MainWindow();
 		}
+
+		public void ToggleBrowser()
+		{
+			if(!Browser.IsVisible)
+			{
+				Browser.SlideUp();
+			}
+			else
+			{
+				Browser.SlideDown();
+			}
+		}
+
+		private void NotificationWebViewIcon_TrayLeftMouseDown(object sender, RoutedEventArgs e)
+		{
+			ToggleBrowser();
+		}
+
+		private void MenuItem_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+		{
+			App.Current.Shutdown();
+		}	
 	}
 }

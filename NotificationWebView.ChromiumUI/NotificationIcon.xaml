@@ -7,10 +7,11 @@
 		Visibility="Visible"
 		ToolTipText="NotificationWebView"
 		IconSource="/Assets/Chromium-xcjs.ico"
-		MenuActivation="RightClick">
+		MenuActivation="RightClick"
+		TrayLeftMouseDown="NotificationWebViewIcon_TrayLeftMouseDown">
 		<Tb:TaskbarIcon.ContextMenu>
-			<ContextMenu Background="LightCoral">
-				<MenuItem Header="Exit NotificationWebView" />
+			<ContextMenu>
+				<MenuItem Header="Exit NotificationWebView" MouseLeftButtonUp="MenuItem_MouseLeftButtonUp" />
 			</ContextMenu>
 		</Tb:TaskbarIcon.ContextMenu>
 	</Tb:TaskbarIcon>

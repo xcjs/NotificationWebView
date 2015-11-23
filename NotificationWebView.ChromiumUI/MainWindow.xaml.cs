@@ -30,12 +30,12 @@ namespace NotificationWebView.ChromiumUI
 
 		public MainWindow()
 		{
-			InitializeComponent();
-
 			WebViewSettings = new CefSettings();
 			WebViewSettings.UserAgent = String.Format("Mozilla/5.0 (Linux; 6.0;) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/{0} Mobile Safari/537.36", Cef.ChromiumVersion);
 
 			Cef.Initialize(WebViewSettings);
+
+			InitializeComponent();		
 
 			SlideUpStoryboard = (Storyboard)TryFindResource("SlideUpStoryboard");
 			SlideDownStoryboard = (Storyboard)TryFindResource("SlideDownStoryboard");
@@ -45,7 +45,7 @@ namespace NotificationWebView.ChromiumUI
 
 			Loaded += new RoutedEventHandler(delegate (object sender, RoutedEventArgs e)
 			{
-				NavigateTo("http://xcjs.com");
+				NavigateTo("https://www.google.com");
 			});
 
 			Closing += new CancelEventHandler(delegate (object sender, CancelEventArgs e)
