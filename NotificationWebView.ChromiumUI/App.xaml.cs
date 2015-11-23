@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using Hardcodet.Wpf.TaskbarNotification;
 
 namespace NotificationWebView.ChromiumUI
 {
@@ -13,5 +14,20 @@ namespace NotificationWebView.ChromiumUI
 	/// </summary>
 	public partial class App : Application
 	{
+		private TaskbarIcon notificationIcon;
+
+		protected override void OnStartup(StartupEventArgs e)
+		{
+			base.OnStartup(e);
+
+			notificationIcon = (TaskbarIcon)FindResource("NotificationWebViewIcon");
+		}
+
+		protected override void OnExit(ExitEventArgs e)
+		{
+			notificationIcon.Dispose();
+
+			base.OnExit(e);
+		}
 	}
 }

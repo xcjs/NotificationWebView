@@ -1,0 +1,18 @@
+﻿<ResourceDictionary
+  x:Class="NotificationWebView.ChromiumUI.NotificationIcon"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:Tb="http://www.hardcodet.net/taskbar">
+	<Tb:TaskbarIcon x:Name="NotificationWebViewIcon" x:Key="NotificationWebViewIcon"
+		Visibility="Visible"
+		ToolTipText="NotificationWebView"
+		IconSource="/Assets/Chromium-xcjs.ico"
+		MenuActivation="RightClick">
+		<Tb:TaskbarIcon.ContextMenu>
+			<ContextMenu Background="LightCoral">
+				<MenuItem Header="Exit NotificationWebView" />
+			</ContextMenu>
+		</Tb:TaskbarIcon.ContextMenu>
+	</Tb:TaskbarIcon>
+</ResourceDictionary>
+
