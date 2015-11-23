@@ -114,7 +114,7 @@ namespace NotificationWebView.ChromiumUI
 
 			Browser = new ChromiumWebBrowser()
 			{
-                Address = url
+				Address = url
 			};
 
 			txtUrl.Text = Browser.Address;
