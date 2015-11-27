@@ -43,7 +43,7 @@ namespace NotificationWebView.ChromiumUI
 			ToggleBrowser();
 		}
 
-		private void MenuItem_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+		private void MenuItem_MouseLeftButtonUp(object sender, RoutedEventArgs e)
 		{
 			App.Current.Shutdown();
 		}	
