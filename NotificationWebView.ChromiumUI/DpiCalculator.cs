@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 
-namespace NotificationWebView.ChromiumUI
+namespace NotificationWebView
 {
 	class DpiCalculator: IDisposable
 	{

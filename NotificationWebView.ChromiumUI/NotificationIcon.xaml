@@ -1,5 +1,5 @@
 ﻿<ResourceDictionary
-  x:Class="NotificationWebView.ChromiumUI.NotificationIcon"
+  x:Class="NotificationWebView.NotificationIcon"
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:Tb="http://www.hardcodet.net/taskbar">

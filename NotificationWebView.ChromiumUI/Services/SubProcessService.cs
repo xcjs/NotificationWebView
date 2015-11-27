@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NotificationWebView.ChromiumUI.Services
+namespace NotificationWebView.Services
 {
 	class SubProcessService
 	{

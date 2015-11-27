@@ -10,7 +10,7 @@ using CefSharp.Wpf;
 using System.Threading.Tasks;
 using System.Diagnostics;
 
-namespace NotificationWebView.ChromiumUI
+namespace NotificationWebView
 {
 	/// <summary>
 	/// Interaction logic for MainWindow.xaml

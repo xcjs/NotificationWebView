@@ -6,9 +6,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using Hardcodet.Wpf.TaskbarNotification;
-using NotificationWebView.ChromiumUI.Services;
+using NotificationWebView.Services;
 
-namespace NotificationWebView.ChromiumUI
+namespace NotificationWebView
 {
 	/// <summary>
 	/// Interaction logic for App.xaml
