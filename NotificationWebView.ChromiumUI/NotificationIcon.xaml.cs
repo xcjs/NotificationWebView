@@ -19,22 +19,22 @@ namespace NotificationWebView.ChromiumUI
 	/// </summary>
 	public partial class NotificationIcon : ResourceDictionary
 	{
-		public MainWindow Browser { get; set; }
+		public MainWindow BrowserUI { get; set; }
 
 		public NotificationIcon()
 		{
-			Browser = new MainWindow();
+			BrowserUI = new MainWindow();
 		}
 
 		public void ToggleBrowser()
 		{
-			if(!Browser.IsVisible)
+			if(!BrowserUI.IsVisible)
 			{
-				Browser.SlideUp();
+				BrowserUI.SlideUp();
 			}
 			else
 			{
-				Browser.SlideDown();
+				BrowserUI.SlideDown();
 			}
 		}
 
