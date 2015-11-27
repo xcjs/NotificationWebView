@@ -78,18 +78,16 @@ namespace NotificationWebView.ChromiumUI
 
 				System.Drawing.Point cursor = Control.MousePosition;
 
-				SlideUpAnimation.From = Screen.PrimaryScreen.Bounds.Bottom;
-				Top = SlideUpAnimation.From.Value;				
+				SlideUpAnimation.From = Top = Screen.PrimaryScreen.Bounds.Bottom;
+				Show();
 
 				Left = cursor.X / dpiSettings.ScalingFactorX - ActualWidth / 2;
 
-				Show();
-
 				// The WPF form height is already adjusted for the DPI (software pixels) - WorkingArea.Bottom will report the physical pixels.
 				SlideUpAnimation.To = Screen.PrimaryScreen.WorkingArea.Bottom / dpiSettings.ScalingFactorY - ActualHeight;
+			}
 
-				SlideUpStoryboard.Begin(this);
-			}		
+			SlideUpStoryboard.Begin(this);
 		}
 
 		public void SlideDown()
@@ -142,11 +140,13 @@ namespace NotificationWebView.ChromiumUI
 
 		public void Dispose()
 		{
-			if (Browser == null) return;
+			if (Browser != null)
+			{
+				Browser.Dispose();
+			}
 
 			AllowFormClose = true;
-			Close();
-			Browser.Dispose();
+			Close();			
 		}
 	}
 }
