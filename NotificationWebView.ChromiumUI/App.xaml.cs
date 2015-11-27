@@ -12,7 +12,7 @@ namespace NotificationWebView.ChromiumUI
 	/// <summary>
 	/// Interaction logic for App.xaml
 	/// </summary>
-	public partial class App : System.Windows.Application
+	public partial class NotificationApp : System.Windows.Application
 	{
 		private TaskbarIcon notificationIcon;
 

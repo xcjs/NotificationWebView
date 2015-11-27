@@ -1,4 +1,4 @@
-﻿<Application x:Class="NotificationWebView.ChromiumUI.App"
+﻿<Application x:Class="NotificationWebView.ChromiumUI.NotificationApp"
 			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 			 xmlns:local="clr-namespace:NotificationWebView.ChromiumUI"

@@ -45,7 +45,7 @@ namespace NotificationWebView.ChromiumUI
 
 		private void MenuItem_Click(object sender, RoutedEventArgs e)
 		{
-			App.Current.Shutdown();
+			NotificationApp.Current.Shutdown();
 		}
 	}
 }
