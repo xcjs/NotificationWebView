@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NotificationWebView.ChromiumUI
+namespace NotificationWebView.ChromiumUI.Services
 {
-	class SubProcessManager
+	class SubProcessService
 	{
 		private const string SUB_PROCESS_NAME = "CefSharp.BrowserSubProcess";
 

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using Hardcodet.Wpf.TaskbarNotification;
+using NotificationWebView.ChromiumUI.Services;
 
 namespace NotificationWebView.ChromiumUI
 {
@@ -28,7 +29,7 @@ namespace NotificationWebView.ChromiumUI
 		{
 			base.OnExit(e);
 			notificationIcon.Dispose();
-			SubProcessManager.KillSubProcesses();
+			SubProcessService.KillSubProcesses();
 		}
 	}
 }
