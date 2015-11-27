@@ -61,7 +61,7 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Assets\chromium-xcjs.ico</ApplicationIcon>
+    <ApplicationIcon>iconsineed-world-128-black.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>
@@ -134,19 +134,22 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="iconsineed-world-128-black.ico" />
     <Resource Include="Assets\Cancel.png" />
     <Content Include="Assets\Cancel.svg" />
     <Resource Include="Assets\Left Arrow.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\iconsineed-world-128-black.png" />
+    <Resource Include="Assets\iconsineed-world-128-white.png" />
+    <Resource Include="Assets\iconsineed-world-128.png" />
+    <Resource Include="Assets\iconsineed-world-128-black.ico" />
+    <Resource Include="Assets\iconsineed-world-128-white.ico" />
     <Content Include="Assets\Left Arrow.svg" />
     <Resource Include="Assets\Refresh.png" />
     <Content Include="Assets\Refresh.svg" />
     <Resource Include="Assets\Right Arrow.png" />
     <Content Include="Assets\Right Arrow.svg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\chromium-xcjs.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\cef.redist.x64.3.2357.1287\build\cef.redist.x64.targets" Condition="Exists('..\packages\cef.redist.x64.3.2357.1287\build\cef.redist.x64.targets')" />

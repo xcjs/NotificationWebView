@@ -5,7 +5,7 @@
 		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		xmlns:local="clr-namespace:NotificationWebView.ChromiumUI"
 		mc:Ignorable="d"
-		Title="NotificationWebView" SizeToContent="WidthAndHeight" ResizeMode="NoResize" ShowInTaskbar="False" Topmost="True" Icon="Assets\chromium-xcjs.ico">
+		Title="NotificationWebView" SizeToContent="WidthAndHeight" ResizeMode="NoResize" ShowInTaskbar="False" Topmost="True" Icon="iconsineed-world-128-black.ico">
 	<Window.Resources>
 		<Storyboard x:Key="SlideUpStoryboard">
 			<DoubleAnimation x:Name="SlideUpAnimation" Duration="0:0:.5" Storyboard.TargetProperty="Top" AccelerationRatio=".1"/>
