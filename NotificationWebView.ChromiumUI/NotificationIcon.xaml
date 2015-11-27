@@ -11,7 +11,7 @@
 		TrayLeftMouseDown="NotificationWebViewIcon_TrayLeftMouseDown">
 		<Tb:TaskbarIcon.ContextMenu>
 			<ContextMenu>
-				<MenuItem Header="Exit NotificationWebView" MouseLeftButtonUp="MenuItem_MouseLeftButtonUp" />
+				<MenuItem Header="Exit NotificationWebView" Click="MenuItem_Click" />
 			</ContextMenu>
 		</Tb:TaskbarIcon.ContextMenu>
 	</Tb:TaskbarIcon>

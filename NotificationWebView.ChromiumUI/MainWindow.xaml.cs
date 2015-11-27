@@ -94,6 +94,8 @@ namespace NotificationWebView.ChromiumUI
 
 		public void SlideDown()
 		{
+			if (!IsVisible) return;
+
 			var dpiSettings = new DpiCalculator();
 			dpiSettings.LoadDpi();
 
