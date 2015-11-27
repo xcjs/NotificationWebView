@@ -19,15 +19,16 @@ namespace NotificationWebView.ChromiumUI
 		protected override void OnStartup(StartupEventArgs e)
 		{
 			base.OnStartup(e);
+			ShutdownMode = ShutdownMode.OnExplicitShutdown;
 
 			notificationIcon = (TaskbarIcon)FindResource("NotificationWebViewIcon");
 		}
 
 		protected override void OnExit(ExitEventArgs e)
 		{
-			notificationIcon.Dispose();
-
 			base.OnExit(e);
+			notificationIcon.Dispose();
+			SubProcessManager.KillSubProcesses();
 		}
 	}
 }
