@@ -15,20 +15,20 @@ namespace NotificationWebView
 	/// </summary>
 	public partial class NotificationApp : System.Windows.Application
 	{
-		private TaskbarIcon notificationIcon;
+		private TaskbarIcon _notificationIcon;
 
 		protected override void OnStartup(StartupEventArgs e)
 		{
 			base.OnStartup(e);
 			ShutdownMode = ShutdownMode.OnExplicitShutdown;
 
-			notificationIcon = (TaskbarIcon)FindResource("NotificationWebViewIcon");
+			_notificationIcon = (TaskbarIcon)FindResource("NotificationWebViewIcon");
 		}
 
 		protected override void OnExit(ExitEventArgs e)
 		{
 			base.OnExit(e);
-			notificationIcon.Dispose();
+			_notificationIcon.Dispose();
 			SubProcessService.KillSubProcesses();
 		}
 	}
