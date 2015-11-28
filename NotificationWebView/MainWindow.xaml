@@ -16,32 +16,34 @@
 		</Storyboard>
 	</Window.Resources>
 	<Grid>
-		<Grid.RowDefinitions>
-			<RowDefinition Height="24" />
-			<RowDefinition Height="640" />
-		</Grid.RowDefinitions>
-		<Button Grid.Row="0" x:Name="btnBack" HorizontalAlignment="Left" Margin="0,0,0,0" Width="24" Height="24" BorderThickness="0">
-			<Button.Background>
-				<ImageBrush ImageSource="Assets/Left Arrow.png" TileMode="None" />
-			</Button.Background>
-		</Button>
-		<Button Grid.Row="0" x:Name="btnForward" HorizontalAlignment="Left" Margin="36,0,0,0" Width="24" Height="24" BorderThickness="0">
-			<Button.Background>
-				<ImageBrush ImageSource="Assets/Right Arrow.png" TileMode="None" />
-			</Button.Background>
-		</Button>
-		<Button Grid.Row="0" x:Name="btnStop" HorizontalAlignment="Left" Margin="72,0,0,0" Width="24" Height="24" BorderThickness="0" Visibility="Hidden">
-			<Button.Background>
-				<ImageBrush ImageSource="Assets/Cancel.png" TileMode="None" />
-			</Button.Background>
-		</Button>
-		<Button Grid.Row="0" x:Name="btnRefresh" HorizontalAlignment="Left" Margin="72,0,0,0" Width="24" Height="24" BorderThickness="0">
-			<Button.Background>
-				<ImageBrush ImageSource="Assets/Refresh.png" TileMode="None" />
-			</Button.Background>
-		</Button>
-		<TextBox Name="txtUrl" Grid.Row="0" Margin="109,1,1,1" Height="22" BorderBrush="Black" BorderThickness="1" Cursor="IBeam" VerticalAlignment="Center" FontSize="14" MaxLines="1" KeyUp="txtUrl_KeyUp" />
-		<CefSharp:ChromiumWebBrowser Grid.Row="1" x:Name="WebView" Width="360" Height="640" />		
+        <Grid.RowDefinitions>
+            <RowDefinition Height="24" />
+            <RowDefinition Height="640" />
+        </Grid.RowDefinitions>
+        <DockPanel Grid.Row="0"  VerticalAlignment="Top" DockPanel.Dock="Top">
+                <Button x:Name="btnBack" HorizontalAlignment="Left" Width="24" Height="24" BorderThickness="0">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Assets/Left Arrow.png" TileMode="None" />
+                    </Button.Background>
+                </Button>
+                <Button x:Name="btnForward" HorizontalAlignment="Left" Width="24" Height="24" BorderThickness="0">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Assets/Right Arrow.png" TileMode="None" />
+                    </Button.Background>
+                </Button>
+                <Button x:Name="btnStop" HorizontalAlignment="Left" Width="0" Height="0" BorderThickness="0" Visibility="Hidden">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Assets/Cancel.png" TileMode="None" />
+                    </Button.Background>
+                </Button>
+                <Button x:Name="btnRefresh" HorizontalAlignment="Left" Width="24" Height="24" BorderThickness="0">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Assets/Refresh.png" TileMode="None" />
+                    </Button.Background>
+                </Button>
+                <TextBox Name="txtUrl" Margin="1,1,1,1" Height="22" BorderBrush="Black" BorderThickness="1" Cursor="IBeam" VerticalAlignment="Center" FontSize="14" MaxLines="1" KeyUp="txtUrl_KeyUp" />
+        </DockPanel>
+        <CefSharp:ChromiumWebBrowser Grid.Row="1" x:Name="WebView" Width="360" Height="640" />		
 	</Grid>
 	<Window.Effect>
 		<DropShadowEffect/>
