@@ -19,7 +19,7 @@
 			<RowDefinition Height="36" />
 			<RowDefinition Height="640" />
 		</Grid.RowDefinitions>
-		<Button Command="{Binding WebBrowser.BackCommand}" Grid.Row="0" x:Name="btnBack" HorizontalAlignment="Left" Margin="0,0,0,0" Width="36" Height="36" BorderThickness="0">
+		<Button Grid.Row="0" x:Name="btnBack" HorizontalAlignment="Left" Margin="0,0,0,0" Width="36" Height="36" BorderThickness="0">
 			<Button.Background>
 				<ImageBrush ImageSource="Assets/Left Arrow.png" TileMode="None" />
 			</Button.Background>
