@@ -45,7 +45,7 @@ namespace NotificationWebView
 
 		private void MenuItem_Click(object sender, RoutedEventArgs e)
 		{
-			NotificationApp.Current.Shutdown();
+			App.Current.Shutdown();
 		}
 	}
 }
