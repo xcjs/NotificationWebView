@@ -165,6 +165,7 @@
     <Resource Include="Assets\iconsineed-world-128-white.png" />
     <Resource Include="Assets\iconsineed-world-128.png" />
     <Resource Include="Assets\iconsineed-world-128-white.ico" />
+    <Resource Include="Assets\iconsineed-world-16-white.ico" />
     <Content Include="Assets\Left Arrow.svg" />
     <Resource Include="Assets\Refresh.png" />
     <Content Include="Assets\Refresh.svg" />
