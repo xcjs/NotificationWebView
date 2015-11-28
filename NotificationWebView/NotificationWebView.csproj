@@ -90,7 +90,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
+    <ApplicationDefinition Include="NotificationApp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
@@ -99,8 +99,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
+    <Compile Include="NotificationApp.xaml.cs">
+      <DependentUpon>NotificationApp.xaml</DependentUpon>
     </Compile>
     <Compile Include="DpiCalculator.cs" />
     <Compile Include="MainWindow.xaml.cs">
