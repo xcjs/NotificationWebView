@@ -23,7 +23,6 @@ namespace NotificationWebView
 		private DoubleAnimation SlideUpAnimation = null;
 		private DoubleAnimation SlideDownAnimation = null;
 
-		private ChromiumWebBrowser Browser = null;
 		private CefSettings WebViewSettings = null;
 
 		private bool AllowFormClose = false;
@@ -105,27 +104,10 @@ namespace NotificationWebView
 
 		public async void NavigateTo(string url)
 		{
-			if (WebView.Content is ChromiumWebBrowser)
-			{
-				ChromiumWebBrowser oldBrowser = WebView.Content as ChromiumWebBrowser;
-				WebView.Content = null;
-				oldBrowser.Dispose();
-			}
 			await Task.Delay(10);
 
-			Browser = new ChromiumWebBrowser()
-			{
-				Address = url
-			};
-
-			txtUrl.Text = Browser.Address;
-
-			WebView.Content = Browser;
-
-			WebView.MouseDown += new MouseButtonEventHandler(delegate (object sender, MouseButtonEventArgs e)
-			{
-				Browser.Focus();
-			});
+			WebView.Address = url;
+			txtUrl.Text = WebView.Address;
 		}
 
 		public void txtUrl_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
@@ -140,9 +122,9 @@ namespace NotificationWebView
 
 		public void Dispose()
 		{
-			if (Browser != null)
+			if (WebView != null)
 			{
-				Browser.Dispose();
+				WebView.Dispose();
 			}
 
 			AllowFormClose = true;

@@ -4,6 +4,7 @@
 		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		xmlns:local="clr-namespace:NotificationWebView"
+		xmlns:CefSharp="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
 		mc:Ignorable="d"
 		Title="NotificationWebView" SizeToContent="WidthAndHeight" ResizeMode="NoResize" ShowInTaskbar="False" Topmost="True" Icon="iconsineed-world-128-black.ico">
 	<Window.Resources>
@@ -40,7 +41,7 @@
 			</Button.Background>
 		</Button>
 		<TextBox Name="txtUrl" Grid.Row="0" Margin="109,1,1,1" Height="34" BorderBrush="Black" BorderThickness="1" Cursor="IBeam" VerticalAlignment="Center" FontSize="24" MaxLines="1" KeyUp="txtUrl_KeyUp" />
-		<ContentControl Grid.Row="1" x:Name="WebView" Width="360" Height="640" />		
+		<CefSharp:ChromiumWebBrowser Grid.Row="1" x:Name="WebView" Width="360" Height="640" />		
 	</Grid>
 	<Window.Effect>
 		<DropShadowEffect/>
