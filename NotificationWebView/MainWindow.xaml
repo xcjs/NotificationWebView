@@ -14,7 +14,7 @@
 			<DoubleAnimation x:Name="SlideDownAnimation" Duration="0:0:.5" Storyboard.TargetProperty="Top" AccelerationRatio=".1"/>
 		</Storyboard>
 	</Window.Resources>
-	<Grid Margin="1,1,1,1">
+	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="36" />
 			<RowDefinition Height="640" />
@@ -39,8 +39,8 @@
 				<ImageBrush ImageSource="Assets/Refresh.png" TileMode="None" />
 			</Button.Background>
 		</Button>
-		<TextBox Name="txtUrl" Grid.Row="0" Margin="108,0,0,0" Height="36" BorderBrush="Black" BorderThickness="1" Cursor="IBeam" VerticalAlignment="Center" FontSize="24" MaxLines="1" KeyUp="txtUrl_KeyUp" />
-		<ContentControl Grid.Row="2" x:Name="WebView" Margin="0,1,0,0" Width="360" Height="640" />		
+		<TextBox Name="txtUrl" Grid.Row="0" Margin="109,1,1,1" Height="34" BorderBrush="Black" BorderThickness="1" Cursor="IBeam" VerticalAlignment="Center" FontSize="24" MaxLines="1" KeyUp="txtUrl_KeyUp" />
+		<ContentControl Grid.Row="1" x:Name="WebView" Width="360" Height="640" />		
 	</Grid>
 	<Window.Effect>
 		<DropShadowEffect/>
