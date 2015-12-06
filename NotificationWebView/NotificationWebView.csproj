@@ -115,6 +115,8 @@
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
     <Compile Include="Services\SubProcessService.cs" />
+    <Compile Include="ViewModelLocator.cs" />
+    <Compile Include="ViewModels\Browser.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -144,6 +146,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Assets\LICENSE-Icons8.pdf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -167,6 +170,7 @@
     <Resource Include="Assets\iconsineed-world-128-white.ico" />
     <Content Include="Assets\Left Arrow.svg" />
     <Resource Include="Assets\Refresh.png" />
+    <Resource Include="Assets\LICENSE-iconsineed.txt" />
     <Content Include="Assets\Refresh.svg" />
     <Resource Include="Assets\Right Arrow.png" />
     <Content Include="Assets\Right Arrow.svg" />
