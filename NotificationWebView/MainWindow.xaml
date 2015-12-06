@@ -6,21 +6,52 @@
 		xmlns:local="clr-namespace:NotificationWebView"
 		xmlns:CefSharp="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
 		mc:Ignorable="d"
-		Title="NotificationWebView" SizeToContent="WidthAndHeight" ResizeMode="NoResize" ShowInTaskbar="False" Topmost="True" Icon="iconsineed-world-128-black.ico">
+		Title="NotificationWebView" 
+		SizeToContent="WidthAndHeight" 
+		ResizeMode="NoResize" 
+		ShowInTaskbar="False" 
+		Topmost="True" 
+		Icon="iconsineed-world-128-black.ico">
 	<Window.Resources>
 		<Storyboard x:Key="SlideUpStoryboard">
 			<DoubleAnimation x:Name="SlideUpAnimation" Duration="0:0:.5" Storyboard.TargetProperty="Top" AccelerationRatio=".1"/>
 		</Storyboard>
 		<Storyboard x:Key="SlideDownStoryboard">
 			<DoubleAnimation x:Name="SlideDownAnimation" Duration="0:0:.5" Storyboard.TargetProperty="Top" AccelerationRatio=".1"/>
-		</Storyboard>
+		</Storyboard>		
 	</Window.Resources>
 	<Grid>
+		<Grid.Resources>
+			<ImageBrush x:Key="BackButtonImage" ImageSource="/Assets/Left Arrow.png"></ImageBrush>
+			<Style TargetType="Button" x:Key="BackButtonStyle">
+				<Setter Property="Background" Value="{StaticResource BackButtonImage}"></Setter>
+				<Setter Property="Template">
+					<Setter.Value>
+						<ControlTemplate TargetType="{x:Type Button}">
+							<Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+								<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+								Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
+								SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" RecognizesAccessKey="True"/>
+							</Border>
+							<ControlTemplate.Triggers>
+								<Trigger Property="IsMouseOver" Value="True">
+									<Setter Property="Cursor" Value="Arrow" />
+									<!-- If we don't tell the background to change on hover, it will remain the same. -->
+								</Trigger>
+							</ControlTemplate.Triggers>
+						</ControlTemplate>
+					</Setter.Value>
+				</Setter>
+			</Style>
+			<ImageBrush x:Key="ForwardButtonImage" ImageSource="/Assets/Right Arrow.png"></ImageBrush>
+			<ImageBrush x:Key="StopButtonImage" ImageSource="/Assets/Cancel.png"></ImageBrush>
+			<ImageBrush x:Key="RefershButtonImage" ImageSource="/Assets/Refresh.png"></ImageBrush>
+		</Grid.Resources>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="36" />
 			<RowDefinition Height="640" />
 		</Grid.RowDefinitions>
-		<Button Grid.Row="0" x:Name="btnBack" HorizontalAlignment="Left" Margin="0,0,0,0" Width="36" Height="36" BorderThickness="0">
+		<Button Style="{StaticResource BackButtonStyle}" Grid.Row="0" x:Name="btnBack" HorizontalAlignment="Left" Margin="0,0,0,0" Width="36" Height="36" BorderThickness="0">
 			<Button.Background>
 				<ImageBrush ImageSource="Assets/Left Arrow.png" TileMode="None" />
 			</Button.Background>
