@@ -1,0 +1,115 @@
+﻿<Window x:Class="NotificationWebView.MainWindow"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:local="clr-namespace:NotificationWebView"
+		xmlns:CefSharp="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
+		mc:Ignorable="d"
+		Title="NotificationWebView" 
+		SizeToContent="WidthAndHeight" 
+		ResizeMode="NoResize" 
+		ShowInTaskbar="False" 
+		Topmost="True" 
+		Icon="iconsineed-world-128-black.ico">
+	<Window.Resources>
+		<Storyboard x:Key="SlideUpStoryboard">
+			<DoubleAnimation x:Name="SlideUpAnimation" Duration="0:0:.25" Storyboard.TargetProperty="Top" AccelerationRatio=".1"/>
+		</Storyboard>
+		<Storyboard x:Key="SlideDownStoryboard">
+<<<<<<< HEAD
+			<DoubleAnimation x:Name="SlideDownAnimation" Duration="0:0:.5" Storyboard.TargetProperty="Top" AccelerationRatio=".1"/>
+		</Storyboard>		
+	</Window.Resources>
+	<Grid>
+		<Grid.Resources>
+			<ImageBrush x:Key="BackButtonImage" ImageSource="/Assets/Left Arrow.png"></ImageBrush>
+			<Style TargetType="Button" x:Key="BackButtonStyle">
+				<Setter Property="Background" Value="{StaticResource BackButtonImage}"></Setter>
+				<Setter Property="Template">
+					<Setter.Value>
+						<ControlTemplate TargetType="{x:Type Button}">
+							<Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+								<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+								Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
+								SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" RecognizesAccessKey="True"/>
+							</Border>
+							<ControlTemplate.Triggers>
+								<Trigger Property="IsMouseOver" Value="True">
+									<Setter Property="Cursor" Value="Arrow" />
+									<!-- If we don't tell the background to change on hover, it will remain the same. -->
+								</Trigger>
+							</ControlTemplate.Triggers>
+						</ControlTemplate>
+					</Setter.Value>
+				</Setter>
+			</Style>
+			<ImageBrush x:Key="ForwardButtonImage" ImageSource="/Assets/Right Arrow.png"></ImageBrush>
+			<ImageBrush x:Key="StopButtonImage" ImageSource="/Assets/Cancel.png"></ImageBrush>
+			<ImageBrush x:Key="RefershButtonImage" ImageSource="/Assets/Refresh.png"></ImageBrush>
+		</Grid.Resources>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="36" />
+			<RowDefinition Height="640" />
+		</Grid.RowDefinitions>
+		<Button Style="{StaticResource BackButtonStyle}" Grid.Row="0" x:Name="btnBack" HorizontalAlignment="Left" Margin="0,0,0,0" Width="36" Height="36" BorderThickness="0">
+			<Button.Background>
+				<ImageBrush ImageSource="Assets/Left Arrow.png" TileMode="None" />
+			</Button.Background>
+		</Button>
+		<Button Grid.Row="0" x:Name="btnForward" HorizontalAlignment="Left" Margin="36,0,0,0" Width="36" Height="36" BorderThickness="0">
+			<Button.Background>
+				<ImageBrush ImageSource="Assets/Right Arrow.png" TileMode="None" />
+			</Button.Background>
+		</Button>
+		<Button Grid.Row="0" x:Name="btnStop" HorizontalAlignment="Left" Margin="72,0,0,0" Width="36" Height="36" BorderThickness="0" Visibility="Hidden">
+			<Button.Background>
+				<ImageBrush ImageSource="Assets/Cancel.png" TileMode="None" />
+			</Button.Background>
+		</Button>
+		<Button Grid.Row="0" x:Name="btnRefresh" HorizontalAlignment="Left" Margin="72,0,0,0" Width="36" Height="36" BorderThickness="0">
+			<Button.Background>
+				<ImageBrush ImageSource="Assets/Refresh.png" TileMode="None" />
+			</Button.Background>
+		</Button>
+		<TextBox Name="txtUrl" Grid.Row="0" Margin="109,1,1,1" Height="34" BorderBrush="Black" BorderThickness="1" Cursor="IBeam" VerticalAlignment="Center" FontSize="24" MaxLines="1" KeyUp="txtUrl_KeyUp" />
+		<CefSharp:ChromiumWebBrowser Grid.Row="1" x:Name="WebView" Width="360" Height="640" />		
+=======
+			<DoubleAnimation x:Name="SlideDownAnimation" Duration="0:0:.25" Storyboard.TargetProperty="Top" AccelerationRatio=".1"/>
+		</Storyboard>
+	</Window.Resources>
+	<Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="24" />
+            <RowDefinition Height="640" />
+        </Grid.RowDefinitions>
+        <DockPanel Grid.Row="0"  VerticalAlignment="Top" DockPanel.Dock="Top">
+                <Button x:Name="btnBack" HorizontalAlignment="Left" Width="24" Height="24" BorderThickness="0">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Assets/Left Arrow.png" TileMode="None" />
+                    </Button.Background>
+                </Button>
+                <Button x:Name="btnForward" HorizontalAlignment="Left" Width="24" Height="24" BorderThickness="0">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Assets/Right Arrow.png" TileMode="None" />
+                    </Button.Background>
+                </Button>
+                <Button x:Name="btnStop" HorizontalAlignment="Left" Width="0" Height="0" BorderThickness="0" Visibility="Hidden">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Assets/Cancel.png" TileMode="None" />
+                    </Button.Background>
+                </Button>
+                <Button x:Name="btnRefresh" HorizontalAlignment="Left" Width="24" Height="24" BorderThickness="0">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Assets/Refresh.png" TileMode="None" />
+                    </Button.Background>
+                </Button>
+                <TextBox Name="txtUrl" Margin="1,1,1,1" Height="22" BorderBrush="Black" BorderThickness="1" Cursor="IBeam" VerticalAlignment="Center" FontSize="14" MaxLines="1" KeyUp="txtUrl_KeyUp" />
+        </DockPanel>
+        <CefSharp:ChromiumWebBrowser Grid.Row="1" x:Name="WebView" Width="360" Height="640" />		
+>>>>>>> 2a95144de16ea3713b5762de346267386fc9afd2
+	</Grid>
+	<Window.Effect>
+		<DropShadowEffect/>
+	</Window.Effect>
+</Window>

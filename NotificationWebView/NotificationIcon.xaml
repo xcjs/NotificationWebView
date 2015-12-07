@@ -6,7 +6,7 @@
 	<Tb:TaskbarIcon x:Name="NotificationWebViewIcon" x:Key="NotificationWebViewIcon"
 		Visibility="Visible"
 		ToolTipText="NotificationWebView"
-		IconSource="Assets/iconsineed-world-128-white.ico"
+		IconSource="Assets/iconsineed-world-16-white.ico"
 		MenuActivation="RightClick"
 		TrayLeftMouseDown="NotificationWebViewIcon_TrayLeftMouseDown">
 		<Tb:TaskbarIcon.ContextMenu>
