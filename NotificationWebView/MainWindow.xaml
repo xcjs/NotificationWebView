@@ -1,4 +1,4 @@
-﻿<Window x:Class="NotificationWebView.MainWindow"
+﻿ <Window x:Class="NotificationWebView.MainWindow"
 		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -62,7 +62,7 @@
 		                <ImageBrush ImageSource="Assets/Right Arrow.png" TileMode="None" />
 		            </Button.Background>
 		        </Button>
-		        <Button x:Name="btnStop" HorizontalAlignment="Left" Width="0" Height="0" BorderThickness="0" Visibility="Hidden">
+		        <Button x:Name="btnStop" HorizontalAlignment="Left" Width="24" Height="24" BorderThickness="0" Visibility="Collapsed">
 		            <Button.Background>
 		                <ImageBrush ImageSource="Assets/Cancel.png" TileMode="None" />
 		            </Button.Background>
