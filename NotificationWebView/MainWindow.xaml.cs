@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using System.Windows.Media.Animation;
 using System.Linq;
 using System.ComponentModel;
+using MahApps.Metro.Controls;
 using CefSharp;
 using CefSharp.Wpf;
 using System.Threading.Tasks;
@@ -15,7 +16,7 @@ namespace NotificationWebView
 	/// <summary>
 	/// Interaction logic for MainWindow.xaml
 	/// </summary>
-	public partial class MainWindow : Window, IDisposable
+	public partial class MainWindow : MetroWindow, IDisposable
 	{
 		private Storyboard SlideUpStoryboard = null;
 		private Storyboard SlideDownStoryboard  = null;
