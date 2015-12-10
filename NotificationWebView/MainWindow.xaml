@@ -6,7 +6,7 @@
 		xmlns:local="clr-namespace:NotificationWebView"
 		xmlns:CefSharp="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
 		xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
-		mc:Ignorable="d"
+        mc:Ignorable="d"
 		Title="NotificationWebView" TitleCaps="False"
 		SizeToContent="WidthAndHeight" 
 		ResizeMode="NoResize" 
@@ -24,9 +24,10 @@
 			<Storyboard x:Key="SlideDownStoryboard">
 				<DoubleAnimation x:Name="SlideDownAnimation" Duration="0:0:.25" Storyboard.TargetProperty="Top" AccelerationRatio=".1"/>
 			</Storyboard>
+            <local:ViewModelLocator x:Key="Locator" />
 		</ResourceDictionary>		
 	</Window.Resources>
-    <Grid>
+    <Grid DataContext="{Binding Browser, Source={StaticResource Locator}}">
         <Grid.RowDefinitions>
 		    <RowDefinition Height="24" />
 		    <RowDefinition Height="640" />
