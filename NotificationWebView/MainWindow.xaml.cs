@@ -83,6 +83,11 @@ namespace NotificationWebView
 
 				Left = cursor.X / dpiSettings.ScalingFactorX - ActualWidth / 2;
 
+				if ((Left + Width) * dpiSettings.ScalingFactorX > Screen.PrimaryScreen.Bounds.Right)
+				{
+					Left = Screen.PrimaryScreen.Bounds.Right / dpiSettings.ScalingFactorX - Width;
+				}
+
 				// The WPF form height is already adjusted for the DPI (software pixels) - WorkingArea.Bottom will report the physical pixels.
 				SlideUpAnimation.To = Screen.PrimaryScreen.WorkingArea.Bottom / dpiSettings.ScalingFactorY - ActualHeight;
 			}
