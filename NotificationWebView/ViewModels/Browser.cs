@@ -68,7 +68,7 @@ namespace NotificationWebView.ViewModels
 
 		public ICommand GoCommand { get; private set; }
 
-		private const string HOME_PAGE = "https://www.google.com";
+		private const string HOME_PAGE = "https://www.google.com/";
 
 		public Browser()
 		{
@@ -82,28 +82,29 @@ namespace NotificationWebView.ViewModels
 		{
 			switch (e.PropertyName)
 			{
-				case "WebBrowser":
-					if (WebView != null)
-					{
-						// TODO: This is a bit of a hack. It would be nicer/cleaner to give the webBrowser focus in the Go()
-						// TODO: method, but it seems like "something" gets messed up (= doesn't work correctly) if we give it
-						// TODO: focus "too early" in the loading process...
-						WebView.FrameLoadEnd += PageLoaded;
-					}
-
+				case nameof(Address):
+					AddressInput = Address;
+					break;
+				case nameof(WebView):
+					AssignEvents();
 					break;
 			}
+		}
+
+		private void AssignEvents()
+		{
+			if(WebView == null) return;
+
+			WebView.FrameLoadEnd += delegate
+			{
+				Application.Current.Dispatcher.BeginInvoke((Action)(() => WebView.Focus()));
+			};
 		}
 
 		private void Go()
 		{
 			Address = AddressInput;
 			Keyboard.ClearFocus();
-		}
-
-		private void PageLoaded()
-		{
-			Application.Current.Dispatcher.BeginInvoke((Action)(() => WebView.Focus()));
 		}
 	}
 }
