@@ -61,11 +61,22 @@
 					</Rectangle.Fill>
 				</Rectangle>
 			</Button>
-			<TextBox Name="txtUrl" Margin="1,1,1,1" Height="22" BorderBrush="Black" BorderThickness="1" Cursor="IBeam" 
-					 VerticalAlignment="Center" FontSize="14" MaxLines="1" KeyUp="txtUrl_KeyUp" />
+			<TextBox Name="txtAddress" Margin="1,1,1,1" Height="22" BorderBrush="Black" BorderThickness="1" Cursor="IBeam" 
+				VerticalAlignment="Center" FontSize="14" MaxLines="1"
+				Text="{Binding AddressInput, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+				GotKeyboardFocus="txtAddress_GotKeyboardFocus"
+				GotMouseCapture="txtAddress_GotMouseCapture">
+				<TextBox.InputBindings>
+					<KeyBinding Key="Enter" Command="{Binding GoCommand}" />
+				</TextBox.InputBindings>
+			</TextBox>
 		</DockPanel>
 		<DockPanel Grid.Row="1" Background="White">
-			<CefSharp:ChromiumWebBrowser x:Name="WebView" Width="360" Height="640" />
+			<CefSharp:ChromiumWebBrowser x:Name="WebView" Width="360" Height="640" 
+				Address="{Binding Address, Mode=TwoWay}"
+				Title="{Binding Title, Mode=OneWayToSource}"
+				AllowDrop="True"
+				WebBrowser="{Binding WebView, Mode=OneWayToSource}" />
 		</DockPanel>
 	</Grid>
 	<Window.Effect>

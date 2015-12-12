@@ -1,52 +1,47 @@
 ﻿using System;
-using System.Windows;
-using System.Windows.Input;
-using System.Windows.Forms;
-using System.Windows.Media.Animation;
-using System.Linq;
 using System.ComponentModel;
-using MahApps.Metro.Controls;
-using CefSharp;
-using CefSharp.Wpf;
+using System.Linq;
 using System.Threading.Tasks;
-using System.Diagnostics;
+using System.Windows;
+using System.Windows.Forms;
+using System.Windows.Input;
+using System.Windows.Media.Animation;
+using CefSharp.Wpf;
+using NotificationWebView.ViewModels;
 
 namespace NotificationWebView
 {
 	/// <summary>
 	/// Interaction logic for MainWindow.xaml
 	/// </summary>
-	public partial class MainWindow: Window, IDisposable
+	public partial class MainWindow : Window, IDisposable
 	{
+		private Browser _viewModel = null;
+
 		private Storyboard SlideUpStoryboard = null;
 		private Storyboard SlideDownStoryboard  = null;
 
 		private DoubleAnimation SlideUpAnimation = null;
 		private DoubleAnimation SlideDownAnimation = null;
 
-		private CefSettings WebViewSettings = null;
-
 		private bool AllowFormClose = false;
 
 		public MainWindow()
 		{
-			WebViewSettings = new CefSettings();
-			WebViewSettings.UserAgent = String.Format("Mozilla/5.0 (Linux; 6.0;) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/{0} Mobile Safari/537.36", Cef.ChromiumVersion);
+			InitializeComponent();
 
-			Cef.Initialize(WebViewSettings);
+			if(Title == null)
+			{
+				Title = AppDomain.CurrentDomain.FriendlyName;
+            }
 
-			InitializeComponent();		
+			_viewModel = DataContext as Browser;
 
 			SlideUpStoryboard = (Storyboard)TryFindResource("SlideUpStoryboard");
 			SlideDownStoryboard = (Storyboard)TryFindResource("SlideDownStoryboard");
 
 			SlideUpAnimation = (DoubleAnimation)SlideUpStoryboard.Children.First();
 			SlideDownAnimation = (DoubleAnimation)SlideDownStoryboard.Children.First();
-
-			Loaded += new RoutedEventHandler(delegate (object sender, RoutedEventArgs e)
-			{
-				NavigateTo("https://www.google.com");
-			});
 
 			Closing += new CancelEventHandler(delegate (object sender, CancelEventArgs e)
 			{
@@ -108,24 +103,6 @@ namespace NotificationWebView
 			SlideDownStoryboard.Begin(this);
 		}
 
-		public async void NavigateTo(string url)
-		{
-			await Task.Delay(10);
-
-			WebView.Address = url;
-			txtUrl.Text = WebView.Address;
-		}
-
-		public void txtUrl_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
-		{
-			switch (e.Key)
-			{
-				case Key.Enter:
-					NavigateTo(txtUrl.Text);
-					break;
-			}
-		}
-
 		public void Dispose()
 		{
 			if (WebView != null)
@@ -135,6 +112,18 @@ namespace NotificationWebView
 
 			AllowFormClose = true;
 			Close();			
+		}
+
+		private void txtAddress_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+		{
+			var textBox = (System.Windows.Controls.TextBox)sender;
+			textBox.SelectAll();
+		}
+
+		private void txtAddress_GotMouseCapture(object sender, System.Windows.Input.MouseEventArgs e)
+		{
+			var textBox = (System.Windows.Controls.TextBox)sender;
+			textBox.SelectAll();
 		}
 	}
 }

@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
+using CefSharp;
 using Hardcodet.Wpf.TaskbarNotification;
 using NotificationWebView.Services;
 
@@ -16,13 +12,23 @@ namespace NotificationWebView
 	public partial class App : System.Windows.Application
 	{
 		private TaskbarIcon _notificationIcon;
+		private CefSettings _webViewSettings = null;
+
+		public App()
+		{
+			_webViewSettings = new CefSettings();
+			_webViewSettings.UserAgent = string.Format(
+				"Mozilla/5.0 (Linux; 6.0;) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/{0} Mobile Safari/537.36", Cef.ChromiumVersion);
+
+			Cef.Initialize(_webViewSettings);
+		}
 
 		protected override void OnStartup(StartupEventArgs e)
 		{
 			base.OnStartup(e);
 			ShutdownMode = ShutdownMode.OnExplicitShutdown;
 
-			_notificationIcon = (TaskbarIcon)FindResource("NotificationWebViewIcon");
+			_notificationIcon = (TaskbarIcon)FindResource("NotificationWebViewIcon");			
 		}
 
 		protected override void OnExit(ExitEventArgs e)
