@@ -62,7 +62,7 @@
 				</Rectangle>
 			</Button>
 			<TextBox Name="txtAddress" Margin="1,1,1,1" Height="22" BorderBrush="Black" BorderThickness="1" Cursor="IBeam" 
-				VerticalAlignment="Center" FontSize="14" MaxLines="1" 
+				VerticalAlignment="Center" FontSize="14" MaxLines="1" Width="288" HorizontalAlignment="Right"
 				Text="{Binding AddressInput, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 				GotKeyboardFocus="txtAddress_GotKeyboardFocus"
 				GotMouseCapture="txtAddress_GotMouseCapture">
