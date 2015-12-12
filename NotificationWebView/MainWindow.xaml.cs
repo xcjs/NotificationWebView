@@ -83,9 +83,9 @@ namespace NotificationWebView
 
 				Left = cursor.X / dpiSettings.ScalingFactorX - ActualWidth / 2;
 
-				if ((Left + Width) * dpiSettings.ScalingFactorX > Screen.PrimaryScreen.Bounds.Right)
+				if ((Left + ActualWidth) * dpiSettings.ScalingFactorX > Screen.PrimaryScreen.Bounds.Right)
 				{
-					Left = Screen.PrimaryScreen.Bounds.Right / dpiSettings.ScalingFactorX - Width;
+					Left = Screen.PrimaryScreen.Bounds.Right / dpiSettings.ScalingFactorX - ActualWidth;
 				}
 
 				// The WPF form height is already adjusted for the DPI (software pixels) - WorkingArea.Bottom will report the physical pixels.
