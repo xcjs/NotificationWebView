@@ -16,7 +16,7 @@ namespace NotificationWebView
 	/// <summary>
 	/// Interaction logic for MainWindow.xaml
 	/// </summary>
-	public partial class MainWindow : MetroWindow, IDisposable
+	public partial class MainWindow: Window, IDisposable
 	{
 		private Storyboard SlideUpStoryboard = null;
 		private Storyboard SlideDownStoryboard  = null;
