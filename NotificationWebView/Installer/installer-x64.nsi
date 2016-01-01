@@ -12,7 +12,7 @@
 	InstallDir "$PROGRAMFILES64\XCJS\NotificationWebView"
   
 	;Get installation folder from registry if available
-	InstallDirRegKey HKCU "Software\NotificationWebView" ""
+	InstallDirRegKey HKLM "Software\NotificationWebView" ""
 
 	;Request application privileges for Windows UAC
 	RequestExecutionLevel admin
@@ -61,6 +61,12 @@ Section "NotificationWebView" NotificationWebView
 	;Create uninstaller
 	WriteUninstaller "$INSTDIR\Uninstall.exe"
 
+	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\NotificationWebView" "DisplayName" "NotificationWebView"
+	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\NotificationWebView" "DisplayIcon" "$INSTDIR\NotificationWebView.exe"
+	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\NotificationWebView" "UninstallString" "$\"$INSTDIR\Uninstall.exe$\""
+	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\NotificationWebView" "NoModify" "1"
+	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\NotificationWebView" "NoRepair" "1"
+
 SectionEnd
 
 ;--------------------------------
@@ -68,10 +74,9 @@ SectionEnd
 
 Section "Uninstall"
 
-	Delete "$INSTDIR\Uninstall.exe"
+	RMDir /r "$INSTDIR"
 
-	RMDir "$INSTDIR"
-
-	DeleteRegKey /ifempty HKCU "Software\NotificationWebView"
+	DeleteRegKey HKLM "Software\NotificationWebView"
+	DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\NotificationWebView"
 
 SectionEnd
