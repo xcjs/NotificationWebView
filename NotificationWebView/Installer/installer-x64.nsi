@@ -5,7 +5,7 @@
 ;General
 
 	;Name and file
-	Name "NotificationWebView Installer"
+	Name "NotificationWebView"
 	OutFile "NotificationWebView_x64_Setup.exe"
 
 	;Default installation folder
@@ -21,6 +21,7 @@
 ;Interface Settings
 
 	!define MUI_ABORTWARNING
+	!define MUI_ICON "..\Assets\iconsineed-world-128-filled.ico"
 
 ;--------------------------------
 ;Pages
