@@ -46,6 +46,7 @@ Section "NotificationWebView" NotificationWebView
 
 	SetOutPath "$INSTDIR"
   
+	File /r "..\bin\x64\Release\Assets"
 	File /r "..\bin\x64\Release\locales"
 	File "..\bin\x64\Release\NotificationWebView.exe"
 	File "..\bin\x64\Release\NotificationWebView.exe.config"
@@ -53,10 +54,10 @@ Section "NotificationWebView" NotificationWebView
 	File "..\bin\x64\Release\*.dll"
 	File "..\bin\x64\Release\*.bin"
 	File "..\bin\x64\Release\*.pak"
-	File "..\bin\x64\Release\*.dat"	
+	File "..\bin\x64\Release\*.dat"
 
 	;Store installation folder
-	;WriteRegStr HKCU "Software\NotificationWebView" "" $INSTDIR
+	WriteRegStr HKCU "Software\NotificationWebView" "" $INSTDIR
   
 	;Create uninstaller
 	WriteUninstaller "$INSTDIR\Uninstall.exe"
@@ -64,9 +65,19 @@ Section "NotificationWebView" NotificationWebView
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\NotificationWebView" "DisplayName" "NotificationWebView"
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\NotificationWebView" "DisplayIcon" "$INSTDIR\NotificationWebView.exe"
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\NotificationWebView" "UninstallString" "$\"$INSTDIR\Uninstall.exe$\""
-	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\NotificationWebView" "NoModify" "1"
-	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\NotificationWebView" "NoRepair" "1"
+	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\NotificationWebView" "NoModify" 1
+	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\NotificationWebView" "NoRepair" 1
 
+SectionEnd
+
+Section "Start Menu Shortcuts" StartMenu
+	createDirectory "$SMPROGRAMS\XCJS"
+	createShortCut "$SMPROGRAMS\XCJS\NotificationWebView.lnk" "$INSTDIR\NotificationWebView.exe"
+	createShortCut "$SMPROGRAMS\XCJS\Uninstall.lnk" "$INSTDIR\Uninstall.exe"
+SectionEnd
+
+Section "Desktop Shortcut" Desktop
+	createShortcut "$Desktop\NotificationWebView.lnk" "$INSTDIR\NotificationWebView.exe" "" "$INSTDIR\Assets\iconsineed-world-128-filled.ico"
 SectionEnd
 
 ;--------------------------------
@@ -74,7 +85,9 @@ SectionEnd
 
 Section "Uninstall"
 
+	RMDir /r "$SMPROGRAMS\XCJS"
 	RMDir /r "$INSTDIR"
+	Delete "$Desktop\NotificationWebView.lnk"
 
 	DeleteRegKey HKLM "Software\NotificationWebView"
 	DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\NotificationWebView"

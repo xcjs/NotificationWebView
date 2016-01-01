@@ -185,7 +185,9 @@
     <Resource Include="Assets\iconsineed-world-128-filled.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\iconsineed-world-128-filled.ico" />
+    <None Include="Assets\iconsineed-world-128-filled.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\.gitignore">
