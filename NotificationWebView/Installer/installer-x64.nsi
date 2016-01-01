@@ -45,6 +45,9 @@
 Section "NotificationWebView" NotificationWebView
 
 	SetOutPath "$INSTDIR"
+
+	NSISdl::download_quiet https://download.microsoft.com/download/1/6/B/16B06F60-3B20-4FF2-B699-5E9B7962F9AE/VSU_4/vcredist_x64.exe vcredist_x64.exe
+	ExecWait '"vcredist_x64.exe" /q' 
   
 	File /r "..\bin\x64\Release\Assets"
 	File /r "..\bin\x64\Release\locales"
