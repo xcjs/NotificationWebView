@@ -18,7 +18,7 @@ namespace NotificationWebView
 		{
 			_webViewSettings = new CefSettings();
 			_webViewSettings.UserAgent = string.Format(
-				"Mozilla/5.0 (Linux; 6.0;) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/{0} Mobile Safari/537.36", Cef.ChromiumVersion);
+				"Mozilla/5.0 (Linux; 6.0; Android 6.0.1;) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/{0} Mobile Safari/537.36", Cef.ChromiumVersion);
 
 			Cef.Initialize(_webViewSettings);
 		}
