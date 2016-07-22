@@ -66,7 +66,7 @@ namespace NotificationWebView.ViewModels
 			}
 		}
 
-		public ICommand GoCommand { get; private set; }
+		public ICommand GoCommand { get; }
 
 		private const string HOME_PAGE = "https://www.google.com/";
 
